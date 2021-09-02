@@ -1,0 +1,16 @@
+[
+  {
+    "name": "genres",
+    "path": "/genres",
+    "component": "/Users/gfatcheva/study/movie-finder/frontend/pages/genres.vue",
+    "chunkName": "pages/genres",
+    "_name": "_7f23dd40"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/gfatcheva/study/movie-finder/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_5491f3f2"
+  }
+]
