@@ -8,9 +8,12 @@ fastify.post('/search', async (request, response) => {
 	const data = JSON.parse(await fs.readFile(path.resolve(__dirname, './movies.json')))
 	const {query, genres, page} = request.body
 
+	const hasAllGenres = (el, genres) =>
+		genres.every(genre => el.genres?.includes(genre))
+
 	return data.filter(el => {
 		return genres ?
-			el.genres?.includes(genres) && (el.title.includes(query) || el.overview.includes(query))
+			hasAllGenres(el, genres) && (el.title.includes(query) || el.overview.includes(query))
 			:
 			el.title.includes(query) || el.overview.includes(query)
 	}).slice(20 * (page - 1), 20 * page)

@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<input type="text">
 		<Genres></Genres>
 	</div>
 </template>

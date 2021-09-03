@@ -15,6 +15,17 @@ export default {
 
 		}
 	},
+	// methods: {
+	// 	async getMovies(genre){
+	// 		await fetch('http://127.0.0.1:8080/search', {
+	// 			method: 'post',
+	// 			body: {
+	// 				"genres": [genre],
+	// 				"page": 1
+	// 			}
+	// 		}).then(data => console.log(data))
+	// 	}
+	// },
 	async fetch() {
 		await this.$store.dispatch("loadGenres")
 	}
