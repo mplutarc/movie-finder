@@ -1,1 +1,14 @@
-{}
+{
+  "Genres": {
+    "description": "Auto imported from components/genres.vue"
+  },
+  "MovieCard": {
+    "description": "Auto imported from components/movieCard.vue"
+  },
+  "Movies": {
+    "description": "Auto imported from components/movies.vue"
+  },
+  "Paginator": {
+    "description": "Auto imported from components/paginator.vue"
+  }
+}
