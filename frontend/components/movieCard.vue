@@ -18,7 +18,7 @@
 export default {
 	name: "MovieCard",
 	props: {
-		movie: Object
+		movie: Object,
 	},
 	data(){
 		return{
