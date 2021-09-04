@@ -20,14 +20,14 @@ export default {
 			query: ''
 		}
 	},
-	mounted() {
-		this.$store.dispatch('search')
-	},
 	watch: {
 		query() {
 			this.$store.dispatch('changeQuery', this.query)
 		}
-	}
+	},
+	mounted() {
+		this.$store.dispatch('search')
+	},
 }
 </script>
 <style>
