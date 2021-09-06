@@ -1,16 +1,11 @@
 <template>
 	<div class="movieCard">
-		<div class="basics">
-			<img :src="movie.poster" alt="">
+		<h3>{{ movie.title }}</h3>
 
-			<div>
-				<h4>{{ movie.title }}</h4>
-				<p v-show="genres">Genres: {{genres}}</p>
-				<p>Release date: {{date}}</p>
-			</div>
-		</div>
+		<p v-show="genres">Genres: {{ genres }}</p>
+		<p>Release date: {{ date }}</p>
 
-		<div>{{ movie.overview }}</div>
+		<p class="overview"><img :src="movie.poster" alt="">{{ movie.overview }}</p>
 	</div>
 </template>
 
@@ -18,8 +13,8 @@
 export default {
 	name: "MovieCard",
 	props: ['movie'],
-	data(){
-		return{
+	data() {
+		return {
 			genres: '',
 			date: ''
 		}
@@ -28,7 +23,7 @@ export default {
 		this.genres = this.movie.genres?.join(", ")
 
 		const tmpDate = new Date(this.movie.release_date)
-		this.date = `${tmpDate.getDate()}/${tmpDate.getMonth()+1}/${tmpDate.getFullYear()} ${tmpDate.getHours()}:${tmpDate.getMinutes()}`
+		this.date = `${tmpDate.getDate()}/${tmpDate.getMonth() + 1}/${tmpDate.getFullYear()} ${tmpDate.getHours()}:${tmpDate.getMinutes()}`
 	}
 }
 </script>
@@ -38,7 +33,7 @@ export default {
 .movieCard {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 5px;
 	padding: 6px;
 	border: none;
 	border-radius: 5px;
@@ -48,17 +43,18 @@ export default {
 	background-color: white;
 }
 
-.basics{
-	display: flex;
-}
-
-h4{
+h3, p {
 	margin: 0;
 }
 
-img{
-	height: 150px;
-	width: 100px;
+.overview{
+	margin-top: 10px;
+}
+
+img {
+	height: 210px;
+	width: 140px;
 	margin-right: 10px;
+	float: left;
 }
 </style>
