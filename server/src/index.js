@@ -14,18 +14,18 @@ fastify.post('/search', async (request, response) => {
 	const data = JSON.parse(await fs.readFile(path.resolve(__dirname, './movies.json')))
 	const {query, genres, page} = request.body
 
+	const hasQuery = (el, query) =>
+		el.title.toLowerCase().includes(query.toLowerCase()) || el.overview.toLowerCase().includes(query.toLowerCase())
+
 	const hasAllGenres = (el, genres) =>
 		genres.every(genre => el.genres?.includes(genre))
 
 	const filteredData = data.filter(el => {
-		return genres ?
-			hasAllGenres(el, genres) && (el.title.includes(query) || el.overview.includes(query))
-			:
-			el.title.includes(query) || el.overview.includes(query)
+		return genres ? hasAllGenres(el, genres) && hasQuery(el, query) : hasQuery(el, query)
 	})
 
 	return {
-		data : filteredData.slice(20 * (page - 1), 20 * page),
+		data: filteredData.slice(20 * (page - 1), 20 * page),
 		totalPages: Math.ceil(filteredData.length / 20)
 	}
 })
