@@ -8,7 +8,7 @@ export const state = () => ({
 	curPage: 1,
 	totalPages: 1,
 	pageData: [],
-	searchQuery: ''
+	searchQuery: '',
 })
 
 export const mutations = {
@@ -66,8 +66,10 @@ export const actions = {
 	},
 
 	async search({commit, state}) {
+		// state.isLoading = true
 		const response = await Api.search(state.searchQuery, state.selectedGenres, state.curPage)
 		commit('setPageData', response.data)
 		commit('setTotalPages', response.totalPages)
+		// state.isLoading = false
 	}
 }

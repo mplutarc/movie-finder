@@ -11,7 +11,7 @@
 
 <script>
 import Paginator from "~/components/paginator"
-import MovieCard from "~/components/MovieCard"
+import MovieCard from "~/components/movieCard"
 
 export default {
 	name: "Movies",

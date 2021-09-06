@@ -56,5 +56,6 @@ img {
 	width: 140px;
 	margin-right: 10px;
 	float: left;
+	background-color: #d7d7d7;
 }
 </style>
