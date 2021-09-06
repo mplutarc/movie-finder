@@ -17,9 +17,7 @@
 <script>
 export default {
 	name: "MovieCard",
-	props: {
-		movie: Object,
-	},
+	props: ['movie'],
 	data(){
 		return{
 			genres: '',
@@ -42,10 +40,12 @@ export default {
 	flex-direction: column;
 	gap: 10px;
 	padding: 6px;
-	border: 1px solid #726e6e;
+	border: none;
 	border-radius: 5px;
 	height: 100%;
 	box-sizing: border-box;
+	box-shadow: -2px 2px 0 3px rgba(83, 172, 240, 0.2);
+	background-color: white;
 }
 
 .basics{

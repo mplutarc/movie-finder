@@ -1,6 +1,6 @@
 <template>
 	<div class="wrapper">
-		<input v-model="query" class="search" type="text">
+		<input id="query" v-model="query" class="search" type="text">
 		<div class="content">
 			<Genres />
 			<Movies />
@@ -31,15 +31,21 @@ export default {
 }
 </script>
 <style>
+body{
+	background-color: rgba(255, 255, 229, 0.2);
+}
 	.wrapper{
 		display: flex;
 		flex-direction: column;
 		padding: 15px;
 	}
 	.search{
-		width: 200px;
-		height: min-content;
+		width: 230px;
+		height: 20px;
 		margin-bottom: 15px;
+		box-shadow: -1px 1px 0 3px rgba(83, 172, 240, 0.2);
+		border: none;
+		border-radius: 5px;
 	}
 	.content{
 		display: flex;

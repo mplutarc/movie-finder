@@ -1,5 +1,5 @@
 <template>
-	<div class="genresWrapper">
+	<div>
 		<div v-for="genre in $store.state.allGenres" :key="genre">
 			<input id="genre" type="checkbox" @change="onChange($event, genre)">
 			<label :for="genre">{{ genre }}</label>
