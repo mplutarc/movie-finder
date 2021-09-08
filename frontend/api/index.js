@@ -7,7 +7,7 @@ export class Api {
 		})).data;
 	}
 
-	static async genres() {
+	static async getGenres() {
 		return (await axios.get('http://127.0.0.1:8080/genres')).data;
 	}
 }

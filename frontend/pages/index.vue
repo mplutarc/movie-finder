@@ -22,11 +22,11 @@ export default {
 	},
 	watch: {
 		query() {
-			this.$store.dispatch('changeQuery', this.query)
+			this.$store.dispatch('query/changeQuery', this.query)
 		}
 	},
 	mounted() {
-		this.$store.dispatch('search')
+		this.$nextTick(() => this.$store.dispatch('query/search'))
 	},
 }
 </script>
@@ -46,6 +46,7 @@ body{
 		box-shadow: -1px 1px 0 3px rgba(83, 172, 240, 0.2);
 		border: none;
 		border-radius: 5px;
+		padding: 4px 6px;
 	}
 	.content{
 		display: flex;

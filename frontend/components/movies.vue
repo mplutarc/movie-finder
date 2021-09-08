@@ -1,7 +1,7 @@
 <template>
 	<div class="moviesWrapper">
 		<div class="moviesCards">
-			<div v-for="movie in $store.state.pageData" :key="movie.id">
+			<div v-for="movie in $store.state.movies.movies" :key="movie.id">
 				<MovieCard :movie="movie"/>
 			</div>
 		</div>
