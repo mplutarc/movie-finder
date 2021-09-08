@@ -2,8 +2,8 @@
 	<v-overlay v-if="loading" :value="overlay">
 		<v-progress-circular
 			indeterminate
-			size="64"
-			color="primary"
+			:size="164"
+			:color="color"
 		></v-progress-circular>
 	</v-overlay>
 </template>
@@ -13,6 +13,7 @@ export default {
 	data: () => ({
 		loading: false,
 		overlay: false,
+		color: "#90CAF9"
 	}),
 	methods: {
 		start() {

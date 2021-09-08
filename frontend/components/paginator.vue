@@ -1,7 +1,7 @@
 <template>
 	<div v-show="$store.state.movies.movies.length">
-		<button :disabled="$store.state.paginator.curPage === 1" @click="click(-1)">Назад</button>
-		<button :disabled="$store.state.paginator.curPage === $store.state.paginator.totalPages" @click="click(1)">
+		<button :disabled="$store.state.paginator.curPage === 1" @click="changePage(-1)">Назад</button>
+		<button :disabled="$store.state.paginator.curPage === $store.state.paginator.totalPages" @click="changePage(1)">
 			Вперед
 		</button>
 	</div>
@@ -11,8 +11,8 @@
 export default {
 	name: "Paginator",
 	methods: {
-		click(delta) {
-			this.$store.dispatch('paginator/changePage', delta)
+		changePage(delta) {
+			this.$store.dispatch('paginator/loadNewPage', delta)
 		}
 	}
 }
