@@ -37,7 +37,7 @@ fastify.get('/genres', async (request, response) => {
 // Run the server!
 const start = async () => {
 	try {
-		await fastify.listen(8080)
+		await fastify.listen(8090)
 	} catch (err) {
 		fastify.log.error(err)
 		process.exit(1)

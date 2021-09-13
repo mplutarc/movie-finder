@@ -1,29 +1,26 @@
 import {Api} from "~/api";
 
 export const state = () => ({
-	selectedGenres: [],
-	allGenres: [],
+	genres: {},
 })
 
 export const mutations = {
-	setAllGenres(state, data) {
-		state.allGenres = data
-	},
-
-	setSelectedGenres(state, data) {
-		state.selectedGenres = data
+	setGenres(state, data) {
+		state.genres = data
 	},
 }
 
 export const actions = {
 	async loadGenres({commit}) {
-		const genres = await Api.getGenres()
-		commit('setAllGenres', genres)
+		const genres = (await Api.getGenres()).reduce((acc, v) => {
+			acc = {...acc, [v]: false}
+			return acc
+		}, {})
+		commit('setGenres', genres)
 	},
 
 	changeSelectedGenres({commit, dispatch}, payload) {
-		commit('setSelectedGenres', payload)
-		commit('paginator/setCurPage', 1, {root:true})
-		dispatch('query/search', '', {root:true})
+		commit('setGenres', payload)
+		dispatch('query/search', {dropPage: true}, {root:true})
 	},
 }

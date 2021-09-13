@@ -1,7 +1,7 @@
 <template>
 	<div v-show="$store.state.movies.movies.length">
-		<button :disabled="$store.state.paginator.curPage === 1" @click="changePage(-1)">Назад</button>
-		<button :disabled="$store.state.paginator.curPage === $store.state.paginator.totalPages" @click="changePage(1)">
+		<button class="button mr-2" :disabled="$store.state.paginator.curPage === 1" @click="changePage(-1)">Назад</button>
+		<button class="button" :disabled="$store.state.paginator.curPage === $store.state.paginator.totalPages" @click="changePage(1)">
 			Вперед
 		</button>
 	</div>
@@ -18,21 +18,21 @@ export default {
 }
 </script>
 <style scoped>
-button {
-	margin-top: 15px;
-	height: 30px;
-	background-color: #b3edff;
-	border: none;
-	border-radius: 5px;
-	padding: 4px 6px;
+.button {
+	@apply rounded bg-white mt-4 h-8 py-1 px-1.5 font-light text-lg leading-4;
+
+	border-top: 2px solid #bfdbfe;
 }
 
-button:hover {
+.button:hover {
 	cursor: pointer;
-	background-color: #58ccff;
+	background-color: #bfdbfe;
 }
 
-button:disabled, button:disabled:hover {
-	background-color: #d7d7d7;
+.button:disabled, button:disabled:hover {
+	background-color: rgba(215, 215, 215, 0.8);
+	border-top: 2px solid #b9b9b9;
+	cursor: default;
+	color: #b2b2b2;
 }
 </style>

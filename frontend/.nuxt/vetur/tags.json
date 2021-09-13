@@ -2,9 +2,6 @@
   "Genres": {
     "description": "Auto imported from components/genres.vue"
   },
-  "Loader": {
-    "description": "Auto imported from components/loader.vue"
-  },
   "MovieCard": {
     "description": "Auto imported from components/movieCard.vue"
   },

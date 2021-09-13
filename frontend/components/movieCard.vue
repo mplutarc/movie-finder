@@ -1,11 +1,15 @@
 <template>
-	<div class="movieCard">
-		<h3>{{ movie.title }}</h3>
+	<div class="movieCard border-t-2 border-blue-200 rounded flex flex-col box-border bg-white border-0">
+		<div class="p-1.5">
+			<p class="text-xl font-medium">{{ movie.title }}</p>
 
-		<p v-show="genres">Genres: {{ genres }}</p>
-		<p>Release date: {{ date }}</p>
+			<p v-show="genres" class="tracking-wider font-extralight text-sm">Genres: {{ genres }}</p>
+			<p class="tracking-wider font-extralight text-sm">Release date: {{ date }}</p>
+		</div>
 
-		<p class="overview"><img :src="movie.poster" alt="">{{ movie.overview }}</p>
+		<p class="bg-gradient-to-b from-white to-indigo-400 rounded p-1.5 mt-2 h-full font-light">
+			<img :src="movie.poster" alt="" class="rounded bg-indigo-50">{{ movie.overview }}
+		</p>
 	</div>
 </template>
 
@@ -31,24 +35,11 @@ export default {
 <style scoped>
 
 .movieCard {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-	padding: 6px;
-	border: none;
-	border-radius: 5px;
 	height: 100%;
-	box-sizing: border-box;
-	box-shadow: -2px 2px 0 3px rgba(83, 172, 240, 0.2);
-	background-color: white;
 }
 
-h3, p {
+p {
 	margin: 0;
-}
-
-.overview{
-	margin-top: 10px;
 }
 
 img {
@@ -56,6 +47,5 @@ img {
 	width: 140px;
 	margin-right: 10px;
 	float: left;
-	background-color: #d7d7d7;
 }
 </style>

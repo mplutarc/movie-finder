@@ -1,9 +1,14 @@
 <template>
-	<div class="wrapper">
-		<input id="query" v-model="query" class="search" type="text">
-		<div class="content">
-			<Genres />
-			<Movies />
+	<div class="p-4 flex flex-col">
+		<input v-model="query"
+			   class="input bg-white h-9 w-1/3 mb-3.5 px-1.5 py-1 rounded
+			   		focus:outline-none focus:ring-1 focus:ring-blue-200"
+			   type="text"
+			   placeholder="Type something"
+			   @input="$store.dispatch('query/search', {dropPage: true})">
+		<div class="content flex justify-between">
+			<Genres/>
+			<Movies/>
 		</div>
 	</div>
 </template>
@@ -16,40 +21,31 @@ import Movies from "~/components/movies"
 export default {
 	components: {Genres, Movies},
 	data() {
-		return {
-			query: ''
-		}
+		return {}
 	},
-	watch: {
-		query() {
-			this.$store.dispatch('query/changeQuery', this.query)
-		}
+	async fetch() {
+		await this.$store.dispatch('query/search', {})
 	},
-	mounted() {
-		this.$nextTick(() => this.$store.dispatch('query/search'))
+	computed: {
+		query: {
+			get() {
+				return this.$store.state.query.searchQuery
+			},
+			set(v) {
+				this.$store.commit('query/setSearchQuery', v)
+			}
+		}
 	},
 }
 </script>
+
 <style>
-body{
-	background-color: rgba(255, 255, 229, 0.2);
+body {
+	background-color: #eef2ff;
 }
-	.wrapper{
-		display: flex;
-		flex-direction: column;
-		padding: 15px;
-	}
-	.search{
-		width: 230px;
-		height: 20px;
-		margin-bottom: 15px;
-		box-shadow: -1px 1px 0 3px rgba(83, 172, 240, 0.2);
-		border: none;
-		border-radius: 5px;
-		padding: 4px 6px;
-	}
-	.content{
-		display: flex;
-		justify-content: space-between;
-	}
+
+.input {
+	margin-left: 20%;
+	border-top: 2px solid #bfdbfe;
+}
 </style>

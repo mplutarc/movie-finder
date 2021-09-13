@@ -1,5 +1,3 @@
-import { debounce } from 'vue-debounce'
-
 import {Api} from "~/api"
 
 export const state = () => ({
@@ -12,25 +10,43 @@ export const mutations = {
 	}
 }
 
-export const actions = {
-	changeQuery(args, payload) {
-		args.payload = payload;
+let abortController = null
 
-		debounce(({commit, dispatch, payload}) => {
-			commit('setSearchQuery', payload)
-			commit('paginator/setCurPage', 1, {root:true})
-			dispatch('search')
-		}, 500)(args)
+export const actions = {
+	handleSearch({commit, state, rootState}, {dropPage}) {
+		// eslint-disable-next-line no-async-promise-executor
+		return new Promise(async (resolve, reject) =>{
+			if(abortController){
+				abortController.abort()
+			}
+
+			abortController = new AbortController()
+			abortController.signal.addEventListener('abort', () => {
+				reject(new Error('abort'))
+			})
+
+			if(dropPage){
+				commit('paginator/setCurPage', 1, {root:true})
+			}
+			const genres = Object.keys(rootState.genres.genres).filter(key => rootState.genres.genres[key])
+
+			const response = await Api.search(state.searchQuery, genres, rootState.paginator.curPage)
+
+			commit('movies/setMovies', response.data, {root:true})
+			commit('paginator/setTotalPages', response.totalPages, {root:true})
+
+			return resolve()
+		}
+	)
 	},
 
-	async search({commit, state, rootState}) {
-		window.$nuxt.$root.$loading.start()
-
-		const response = await Api.search(state.searchQuery, rootState.genres.selectedGenres, rootState.paginator.curPage)
-
-		commit('movies/setMovies', response.data, {root:true})
-		commit('paginator/setTotalPages', response.totalPages, {root:true})
-
-		window.$nuxt.$root.$loading.finish()
+	async search({dispatch}, p){
+		try {
+			await dispatch('handleSearch', p)
+		}
+		catch (e) {
+			if(e.message !== 'abort')
+				throw new Error(e.message)
+		}
 	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<div class="moviesWrapper">
-		<div class="moviesCards">
+		<div class="grid gap-3.5 grid-cols-2">
 			<div v-for="movie in $store.state.movies.movies" :key="movie.id">
 				<MovieCard :movie="movie"/>
 			</div>
@@ -22,13 +22,6 @@ export default {
 <style scoped>
 .moviesWrapper{
 	width: 80%;
-}
-
-.moviesCards{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 10px;
-	grid-row-gap: 10px;
 }
 
 </style>

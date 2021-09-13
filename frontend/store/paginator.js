@@ -15,7 +15,7 @@ export const mutations = {
 export const actions = {
 	loadNewPage({commit, dispatch, state}, payload) {
 		commit('setCurPage', state.curPage + payload)
-		dispatch('query/search', '', {root: true})
+		dispatch('query/search', {}, {root: true})
 	},
 
 }

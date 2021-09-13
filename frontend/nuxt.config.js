@@ -16,6 +16,8 @@ export default {
     ]
   },
 
+  ssr: false,
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -36,6 +38,8 @@ export default {
     '@nuxtjs/stylelint-module',
 
     '@nuxtjs/vuetify',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/postcss8',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -49,5 +53,4 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  loading: '~/components/loader.vue',
 }
