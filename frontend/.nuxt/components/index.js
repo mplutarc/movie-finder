@@ -1,3 +1,4 @@
+export { default as CustomCheckbox } from '../../components/customCheckbox.vue'
 export { default as Genres } from '../../components/genres.vue'
 export { default as MovieCard } from '../../components/movieCard.vue'
 export { default as Movies } from '../../components/movies.vue'

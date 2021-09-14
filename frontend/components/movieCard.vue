@@ -1,5 +1,5 @@
 <template>
-	<div class="movieCard border-t-2 border-blue-200 rounded flex flex-col box-border bg-white border-0">
+	<div class="h-full border-t-2 border-blue-200 rounded flex flex-col box-border bg-white border-0">
 		<div class="p-1.5">
 			<p class="text-xl font-medium">{{ movie.title }}</p>
 
@@ -7,7 +7,7 @@
 			<p class="tracking-wider font-extralight text-sm">Release date: {{ date }}</p>
 		</div>
 
-		<p class="bg-gradient-to-b from-white to-indigo-400 rounded p-1.5 mt-2 h-full font-light">
+		<p class="bg-gradient-to-b from-white to-indigo-300 rounded p-1.5 h-full font-light border-t-2 border-blue-200">
 			<img :src="movie.poster" alt="" class="rounded bg-indigo-50">{{ movie.overview }}
 		</p>
 	</div>
@@ -33,15 +33,6 @@ export default {
 </script>
 
 <style scoped>
-
-.movieCard {
-	height: 100%;
-}
-
-p {
-	margin: 0;
-}
-
 img {
 	height: 210px;
 	width: 140px;

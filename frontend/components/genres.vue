@@ -1,26 +1,23 @@
 <template>
-	<div>
+	<div class="ml-10">
 		<p class="mb-2">Genres:</p>
 		<div v-for="(val, genre) in $store.state.genres.genres" :key="genre" class="flex items-center mr-4 mb-2">
-				<input type="checkbox" class="opacity-0 absolute h-8 w-8"
-					   :value="val" @change="onChange(genre)">
-				<div class="checkbox bg-white border-t-2 rounded border-blue-300 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">
-					<svg class="fill-current hidden w-3 h-3 text-blue-600 pointer-events-none" version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-						<g fill="none" fill-rule="evenodd">
-							<g transform="translate(-9 -11)" fill="#1F73F1" fill-rule="nonzero">
-								<path d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-							</g>
-						</g>
-					</svg>
-				</div>
-				<p class=" font-light">{{ genre }}</p>
+			<input type="checkbox" class="opacity-0 absolute h-8 w-8"
+				   :value="val" @change="onChange(genre)">
+
+			<CustomCheckbox/>
+
+			<p class=" font-light">{{ genre }}</p>
 		</div>
 	</div>
 </template>
 
 <script>
+import CustomCheckbox from '~/components/customCheckbox'
+
 export default {
 	name: "Genres",
+	components: {CustomCheckbox},
 	async fetch() {
 		await this.$store.dispatch("genres/loadGenres")
 	},
@@ -34,14 +31,16 @@ export default {
 </script>
 
 <style scoped>
-.checkbox{
+.checkbox {
 	max-width: 24px;
 	min-width: 24px;
 	height: 24px;
 }
+
 input:checked + div {
 	@apply border-blue-500;
 }
+
 input:checked + div svg {
 	@apply block;
 }

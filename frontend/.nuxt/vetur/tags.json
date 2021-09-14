@@ -1,4 +1,7 @@
 {
+  "CustomCheckbox": {
+    "description": "Auto imported from components/customCheckbox.vue"
+  },
   "Genres": {
     "description": "Auto imported from components/genres.vue"
   },
